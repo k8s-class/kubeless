@@ -41,6 +41,7 @@ kubeless function call myfunction --data 'This is some data'
 ```
 kubectl create -f nginx-ingress-controller-with-elb.yml
 kubeless trigger http create myfunction --function-name myfunction --hostname myfunction.aheadlabs.io
+kubeless trigger http create myfunction --function-name hello --hostname hello.aheadlabs.io
 ```
 
 
@@ -48,3 +49,14 @@ kubeless trigger http create myfunction --function-name myfunction --hostname my
 ## Kafka Installation
 ```
 export RELEASE=$(curl -s https://api.github.com/repos/kubeless/kafka-trigger/releases/latest | grep tag_name | cut -d '"' -f 4)
+kubectl create -f https://github.com/kubeless/kafka-trigger/releases/download/$RELEASE/kafka-zookeeper-$RELEASE.yaml
+```
+
+### Trigger and publish
+
+```
+kubeless trigger kafka create test --function-selector created-by=kubeless,function=hello --trigger-topic hello
+kubeless topic publish --topic hello --data "this message will sent to output"
+
+```
+
