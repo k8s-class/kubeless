@@ -32,10 +32,7 @@ kubeless function deploy myfunction --runtime nodejs6 \
 ```
 kubeless function ls
 ```
-## Call Function
-```
-kubeless function call myfunction --data 'This is some data'
-```
+
 
 ## Expose function
 ```
@@ -60,3 +57,8 @@ kubeless topic publish --topic hello --data "this message will sent to output"
 
 ```
 
+## Call Function
+```
+kubeless function call myfunction --data 'This is some data'
+kubeless function call hello --data 'This is some test data'
+```
