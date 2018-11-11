@@ -38,7 +38,9 @@ kubeless function ls
 
 ## Expose function
 ```
+* Only deploy the ingress controller if you do not have an ingress controller deployed. 
 kubectl create -f nginx-ingress-controller-with-elb.yml
+
 kubeless trigger http create myfunction --function-name myfunction --hostname myfunction.aheadlabs.io
 kubeless trigger http create myfunction --function-name hello --hostname hello.aheadlabs.io
 ```
