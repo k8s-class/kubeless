@@ -66,3 +66,16 @@ kubeless topic publish --topic hello --data "this message will sent to output"
 kubeless function call myfunction --data 'This is some data'
 kubeless function call hello --data 'This is some test data'
 ```
+
+## Create HTTP endpoint
+
+```
+kubeless trigger http create hello --function-name hello  --path echo --hostname hello.ghettolabs.io
+```
+
+```
+curl --data '{"Another": "Echo"}' \
+  --header "Host: hello.ghettolabs.io" \
+  --header "Content-Type:application/json" \
+  hello.ghettolabs.io/echo
+```
